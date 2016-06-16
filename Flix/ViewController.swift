@@ -13,6 +13,7 @@ import MBProgressHUD
 class ViewController: UIViewController, UITableViewDataSource {
     
     
+    @IBOutlet weak var error: UITextView!
     @IBOutlet weak var tableView: UITableView!
     var movies : [NSDictionary]?
     
@@ -23,36 +24,42 @@ class ViewController: UIViewController, UITableViewDataSource {
         tableView.insertSubview(refreshControl, atIndex: 0)
         //tell table view that I am datasource
         tableView.dataSource = self
+        if (Reachability.isConnectedToNetwork() == true) {
+            let apiKey = "ef2dab19dabe5f6bca876496b7d76ab7"
+            let url = NSURL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
+            let request = NSURLRequest(
+                URL: url!,
+                cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData,
+                timeoutInterval: 10)
+            
+            let session = NSURLSession(
+                configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+                delegate: nil,
+                delegateQueue: NSOperationQueue.mainQueue()
+            )
         
-        let apiKey = "ef2dab19dabe5f6bca876496b7d76ab7"
-        let url = NSURL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
-        let request = NSURLRequest(
-            URL: url!,
-            cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData,
-            timeoutInterval: 10)
-        
-        let session = NSURLSession(
-            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
-            delegate: nil,
-            delegateQueue: NSOperationQueue.mainQueue()
-        )
-        
-        // Display HUD right before the request is made
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        
-        let task: NSURLSessionDataTask = session.dataTaskWithRequest(request, completionHandler: { (dataOrNil, response, error) in
-            MBProgressHUD.hideHUDForView(self.view, animated: true)
-            if let data = dataOrNil {
-                if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
-                    data, options:[]) as? NSDictionary {
-                    print("response: \(responseDictionary)")
-                    self.movies = responseDictionary["results"] as! [NSDictionary]
-                    self.tableView.reloadData()
-                    
+            // Display HUD right before the request is made
+            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            
+            let task: NSURLSessionDataTask = session.dataTaskWithRequest(request, completionHandler: { (dataOrNil, response, error) in
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
+                if let data = dataOrNil {
+                    if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
+                        data, options:[]) as? NSDictionary {
+                        print("response: \(responseDictionary)")
+                        self.movies = responseDictionary["results"] as! [NSDictionary]
+                        self.tableView.reloadData()
+                        
+                    }
                 }
-            }
-        })
-        task.resume()
+            })
+            task.resume()
+            error.text = "Pull to Refresh"
+            error.backgroundColor = UIColor(red: 51/255,green: 153/255, blue: 255/255, alpha:1)
+        } else {
+            error.text = "Network Error"
+            error.backgroundColor = UIColor.grayColor()
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -88,33 +95,40 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     
     func refreshControlAction(refreshControl: UIRefreshControl) {
-        
-        let apiKey = "ef2dab19dabe5f6bca876496b7d76ab7"
-        let url = NSURL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
-        let request = NSURLRequest(
-            URL: url!,
-            cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData,
-            timeoutInterval: 10)
-        
-        let session = NSURLSession(
-            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
-            delegate: nil,
-            delegateQueue: NSOperationQueue.mainQueue()
-        )
-        
-        let task: NSURLSessionDataTask = session.dataTaskWithRequest(request, completionHandler: { (dataOrNil, response, error) in
-            MBProgressHUD.hideHUDForView(self.view, animated: true)
-            if let data = dataOrNil {
-                if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
-                    data, options:[]) as? NSDictionary {
-                    print("response: \(responseDictionary)")
-                    self.movies = responseDictionary["results"] as! [NSDictionary]
-                    self.tableView.reloadData()
-                    refreshControl.endRefreshing()
+        if (Reachability.isConnectedToNetwork() == true) {
+            let apiKey = "ef2dab19dabe5f6bca876496b7d76ab7"
+            let url = NSURL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
+            let request = NSURLRequest(
+                URL: url!,
+                cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData,
+                timeoutInterval: 10)
+            
+            let session = NSURLSession(
+                configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+                delegate: nil,
+                delegateQueue: NSOperationQueue.mainQueue()
+            )
+            
+            let task: NSURLSessionDataTask = session.dataTaskWithRequest(request, completionHandler: { (dataOrNil, response, error) in
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
+                if let data = dataOrNil {
+                    if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
+                        data, options:[]) as? NSDictionary {
+                        print("response: \(responseDictionary)")
+                        self.movies = responseDictionary["results"] as! [NSDictionary]
+                        self.tableView.reloadData()
+                        refreshControl.endRefreshing()
+                    }
                 }
-            }
-        })
-        task.resume()
+            })
+            error.text = "Pull to Refresh"
+            error.backgroundColor = UIColor(red: 51/255,green: 153/255, blue: 255/255, alpha:1)
+            task.resume()
+        } else {
+            refreshControl.endRefreshing()
+            error.text = "Network Error"
+            error.backgroundColor = UIColor.grayColor()
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
