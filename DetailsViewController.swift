@@ -40,13 +40,6 @@ class DetailsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func goMovieTickets(sender: AnyObject) {
-        UIApplication.sharedApplication().openURL(NSURL(string: "http://www.movietickets.com/movies#.V2IVmJMrJsM")!)
-        
-    }
-    
-    
-    
     @IBAction func goFandango(sender: AnyObject) {
         let searchTitle = movies![sentIndex]["title"] as! String
         let toSearch = searchTitle.stringByReplacingOccurrencesOfString(" ", withString: "+")
