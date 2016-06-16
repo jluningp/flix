@@ -15,17 +15,18 @@ The following **required** functionality is complete:
 * [x] User can pull to refresh the movie list.
 
 The following **optional** features are implemented:
-* [ ] 
+* [x] User can view the large movie poster by tapping on the cell
+* [x] User interface is prettier
 
 The following **additional** features are implemented:
-
-- [ ] 
+- [x] User can go to Fandango to purchase movie tickets
+- [x] Scrolling  view of the whole summary
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/5OM3mmg.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/bA7PsGe.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
