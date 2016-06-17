@@ -4,7 +4,7 @@ Flix is a movie application for iOS.
 
 Submitted by: Jeanne Luning Prak
 
-Time spent: 15 hours spent in total
+Time spent: 15 (ish?) hours spent in total
 
 ## User Stories
 
