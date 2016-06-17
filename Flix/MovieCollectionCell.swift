@@ -10,5 +10,5 @@ import UIKit
 
 class MovieCollectionCell: UICollectionViewCell {
     
-    @IBOutlet weak var color: UILabel!
+    @IBOutlet weak var poster: UIImageView!
 }
