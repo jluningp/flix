@@ -4,7 +4,7 @@ Flix is a movie application for iOS.
 
 Submitted by: Jeanne Luning Prak
 
-Time spent: _ hours spent in total
+Time spent: 15 hours spent in total
 
 ## User Stories
 
@@ -26,6 +26,8 @@ The following **additional** features are implemented:
 - [x] Collection view in addition to table view (with selector to toggle between them)
 - [x] Table view to show actors with names, rolls, and images (gotten from extra API calls)
 - [x] User can view rating and release date of movie 
+- [x] App icon 
+- [x] Splash screen
 
 ## Video Walkthrough
 
