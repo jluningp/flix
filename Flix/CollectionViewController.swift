@@ -153,7 +153,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         let totalwidth = collectionView.bounds.size.width;
         let numberOfCellsPerRow = 2
         let dimensions = CGFloat(((Int(totalwidth) - 10) / numberOfCellsPerRow))
-        return CGSizeMake(dimensions, dimensions)
+        return CGSizeMake(dimensions, dimensions * 1.3)
     }
     
     // This method updates filteredData based on the text in the Search Box
