@@ -4,7 +4,7 @@ Flix is a movie application for iOS.
 
 Submitted by: Jeanne Luning Prak
 
-Time spent: 3 hours spent in total
+Time spent: 15 (ish? plus or minus 5?) hours spent in total
 
 ## User Stories
 
@@ -15,18 +15,25 @@ The following **required** functionality is complete:
 * [x] User can pull to refresh the movie list.
 
 The following **optional** features are implemented:
-* [x] User can view the large movie poster by tapping on the cell
+* [x] User can view a details screen by tapping on a button in the cell
 * [x] User interface is prettier
+* [x] Collection view instead of table view
+* [x] Search bar for user to search movies
 
 The following **additional** features are implemented:
 - [x] User can go to Fandango to purchase movie tickets
 - [x] Scrolling  view of the whole summary
+- [x] Collection view in addition to table view (with selector to toggle between them)
+- [x] Table view to show actors with names, rolls, and images (gotten from extra API calls)
+- [x] User can view rating and release date of movie 
+- [x] App icon 
+- [x] Splash screen
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/bA7PsGe.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/dQhX9SP.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
