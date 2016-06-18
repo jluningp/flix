@@ -4,7 +4,7 @@ Flix is a movie application for iOS.
 
 Submitted by: Jeanne Luning Prak
 
-Time spent: 15 (ish? plus or minus 5?) hours spent in total
+Time spent: 20 (ish? plus or minus 5?) hours spent in total
 
 ## User Stories
 
@@ -33,9 +33,10 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/dQhX9SP.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+<img src='http://i.imgur.com/gT4aR4H.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/pLI7Axr.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/1vn8ufY.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+GIFs created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
