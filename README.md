@@ -42,7 +42,9 @@ GIFs created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-
+## Questions
+1. How do the network requests actually work?
+2. What is with the exclamation points and forcing optional types in Swift?
 
 ## Credits
 
